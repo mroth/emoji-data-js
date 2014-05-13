@@ -44,15 +44,17 @@ describe "EmojiChar", ->
         # @invader.to_s.should eq(@invader.char)
 
     describe "#char", ->
-      it "should render as happy shiny unicode"
-        # @invader.char.should eq("👾")
+      it "should render as happy shiny unicode", ->
+        @invader.char().should.equal "👾"
 
-      it "should render as happy shiny unicode for doublebyte chars too"
-        # @usflag.char.should eq("🇺🇸")
+      it "should render as happy shiny unicode for doublebyte chars too", ->
+        @usflag.char().should.equal "🇺🇸"
 
-      it "should have a flag to output forced emoji variant char encoding if requested"
-        # @cloud.char(    {variant_encoding: false}).should eq("\u{2601}")
-        # @cloud.char(    {variant_encoding:  true}).should eq("\u{2601}\u{FE0F}")
+      it "should have a flag to output forced emoji variant char encoding if requested", ->
+        @cloud.char(    {variant_encoding: false}).should.equal "\u2601"
+        @cloud.char(    {variant_encoding:  true}).should.equal "\u2601\uFE0F"
+
+      it "should fall back to normal encoding if no variant exists, even when requested"
         # @invader.char(  {variant_encoding: false}).should eq("\u{1F47E}")
         # @invader.char(  {variant_encoding:  true}).should eq("\u{1F47E}")
 
