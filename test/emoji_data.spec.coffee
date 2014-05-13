@@ -21,13 +21,17 @@ describe 'EmojiData', ->
 
 
   describe ".all_doublebyte", ->
-    it "should return an array of all 21 known emoji chars with doublebyte encoding"
-      # EmojiData.all_doublebyte.count.should eq(21)
+    it "should return an array of all 21 known emoji chars with doublebyte encoding", ->
+      results = EmojiData.all_doublebyte()
+      results.length.should.equal 21
+      result.should.be.an.instanceof(EmojiData.EmojiChar) for result in results
 
 
   describe ".all_with_variants", ->
-    it "should return an array of all 107 known emoji chars with variant encodings"
-      # EmojiData.all_with_variants.count.should eq(107)
+    it "should return an array of all 107 known emoji chars with variant encodings", ->
+      results = EmojiData.all_with_variants()
+      results.length.should.equal 107
+      result.should.be.an.instanceof(EmojiData.EmojiChar) for result in results
 
 
   describe ".chars", ->
