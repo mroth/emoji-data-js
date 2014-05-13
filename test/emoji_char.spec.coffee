@@ -68,13 +68,13 @@ describe "EmojiChar", ->
 
     describe "#is_doublebyte", ->
       it "should indicate when a character is doublebyte based on the unified ID", ->
-        @usflag.is_doublebyte().should.equal true
-        @invader.is_doublebyte().should.equal false
+        @usflag.is_doublebyte().should.be.true
+        @invader.is_doublebyte().should.be.false
 
     describe "#has_variants", ->
       it "should indicate when a character has an alternate variant encoding", ->
-        @hourglass.has_variants().should.equal true
-        @usflag.has_variants().should.equal false
+        @hourglass.has_variants().should.be.true
+        @usflag.has_variants().should.be.false
 
     describe "#variant", ->
       it "should return the most likely variant encoding ID representation for the char"
