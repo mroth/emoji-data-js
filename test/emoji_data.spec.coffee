@@ -3,24 +3,21 @@ require 'coffee-errors'
 chai = require 'chai'
 sinon = require 'sinon'
 # using compiled JavaScript file here to be sure module works
-emojiData = require '../lib/emoji_data.js'
+EmojiData = require '../lib/emoji_data.js'
 
-expect = chai.expect
+# expect = chai.expect
+chai.should()
+
 chai.use require 'sinon-chai'
-
-# describe 'emoji-data', ->
-#   it 'works', ->
-#     actual = emojiData 'World'
-#     expect(actual).to.eql 'Hello World'
 
 
 describe 'EmojiData', ->
   describe ".all", ->
-    it "should return an array of all 845 known emoji chars"
-      # EmojiData.all.count.should eq(845)
+    it "should return an array of all 845 known emoji chars", ->
+      EmojiData.all().length.should.equal 845
 
-    it "should return all EmojiChar objects"
-      # EmojiData.all.all? {|char| char.class == EmojiData::EmojiChar}.should be_true
+    it "should return all EmojiChar objects", ->
+      result.should.be.an.instanceof(EmojiData.EmojiChar) for result in EmojiData.all()
 
 
   describe ".all_doublebyte", ->
