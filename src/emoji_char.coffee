@@ -10,5 +10,12 @@ class EmojiChar
   is_doublebyte: ->
     @unified.match(/-/) isnt null
 
+  # Does the character have any variant encodings?
+  #
+  # Returns boolean
+  has_variants: ->
+    return false unless @variations?
+    @variations.length > 0
+
 
 module.exports = EmojiChar

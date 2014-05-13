@@ -66,18 +66,15 @@ describe "EmojiChar", ->
         # @invader.chars.should eq(["\u{1F47E}"])
         # @cloud.chars.should   eq(["\u{2601}","\u{2601}\u{FE0F}"])
 
-
     describe "#is_doublebyte", ->
       it "should indicate when a character is doublebyte based on the unified ID", ->
         @usflag.is_doublebyte().should.equal true
         @invader.is_doublebyte().should.equal false
 
-
-    describe "#variant?", ->
-      it "should indicate when a character has an alternate variant encoding"
-        # @hourglass.variant?.should be_true
-        # @usflag.variant?.should be_false
-
+    describe "#has_variants", ->
+      it "should indicate when a character has an alternate variant encoding", ->
+        @hourglass.has_variants().should.equal true
+        @usflag.has_variants().should.equal false
 
     describe "#variant", ->
       it "should return the most likely variant encoding ID representation for the char"
