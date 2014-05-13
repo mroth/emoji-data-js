@@ -3,14 +3,14 @@ require 'coffee-errors'
 chai = require 'chai'
 sinon = require 'sinon'
 # using compiled JavaScript file here to be sure module works
-emojiData = require '../lib/emoji_char.js'
+EmojiChar = require '../lib/emoji_char.js'
 
 expect = chai.expect
 chai.use require 'sinon-chai'
 
 
 describe "EmojiChar", ->
-  
+
   describe ".new", ->
     # before(:all) do
     #   poop_json = %q/{"name":"PILE OF POO","unified":"1F4A9","variations":[],"docomo":"","au":"E4F5","softbank":"E05A","google":"FE4F4","image":"1f4a9.png","sheet_x":11,"sheet_y":19,"short_name":"hankey","short_names":["hankey","poop","shit"],"text":null}/
@@ -33,12 +33,11 @@ describe "EmojiChar", ->
 
 
   context "instance methods", ->
-    # before(:all) do
-    #   @invader   = EmojiChar.new({'unified' => '1F47E'})
-    #   @usflag    = EmojiChar.new({'unified' => '1F1FA-1F1F8'})
-    #   @hourglass = EmojiChar.new({'unified' => '231B', 'variations' => ['231B-FE0F']})
-    #   @cloud     = EmojiChar.new({'unified' => '2601', 'variations' => ['2601-FE0F']})
-    # end
+    before ->
+      @invader   = new EmojiChar({unified: '1F47E'})
+      @usflag    = new EmojiChar({unified: '1F1FA-1F1F8'})
+      @hourglass = new EmojiChar({unified: '231B', variations: ['231B-FE0F']})
+      @cloud     = new EmojiChar({unified: '2601', variations: ['2601-FE0F']})
 
     describe "#to_s", ->
       it "should return the unicode char as string as default to_s"
@@ -68,10 +67,10 @@ describe "EmojiChar", ->
         # @cloud.chars.should   eq(["\u{2601}","\u{2601}\u{FE0F}"])
 
 
-    describe "#doublebyte?", ->
-      it "should indicate when a character is doublebyte based on the unified ID"
-        # @usflag.doublebyte?.should be_true
-        # @invader.doublebyte?.should be_false
+    describe "#is_doublebyte", ->
+      it "should indicate when a character is doublebyte based on the unified ID", ->
+        @usflag.is_doublebyte().should.equal true
+        @invader.is_doublebyte().should.equal false
 
 
     describe "#variant?", ->
