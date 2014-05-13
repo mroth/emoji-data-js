@@ -10,7 +10,7 @@
     "email": "mroth@mroth.info",
     "url": "https://github.com/mroth"
   },
-  "main": "./lib/emoji-data.js",
+  "main": "./lib/emoji_data.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/mroth/emoji-data.git"
