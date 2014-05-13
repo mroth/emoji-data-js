@@ -1,7 +1,7 @@
 {
   "name": "emoji-data",
   "version": "0.0.1",
-  "description": "Awesome module",
+  "description": "Convenience wrapper for emoji/unicode operations",
   "keywords": [],
   "homepage": "https://github.com/mroth/emoji-data",
   "bugs": "https://github.com/mroth/emoji-data/issues",
