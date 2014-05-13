@@ -77,8 +77,8 @@ describe "EmojiChar", ->
         @usflag.has_variants().should.be.false
 
     describe "#variant", ->
-      it "should return the most likely variant encoding ID representation for the char"
-        # @hourglass.variant.should eq('231B-FE0F')
+      it "should return the most likely variant encoding ID representation for the char", ->
+        @hourglass.variant().should.equal '231B-FE0F'
 
-      it "should return nil if no variant encoding for the char exists"
-        # @usflag.variant.should be_nil
+      it "should return null if no variant encoding for the char exists", ->
+        expect(@usflag.variant()).to.be.null

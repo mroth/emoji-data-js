@@ -17,5 +17,12 @@ class EmojiChar
     return false unless @variations?
     @variations.length > 0
 
+  # The most likely variant ID of the char
+  #
+  # Returns a string of the unified variant ID
+  variant: ->
+    return null unless @variations? && @variations.length > 0
+    @variations[0]
+
 
 module.exports = EmojiChar
