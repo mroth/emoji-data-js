@@ -1,0 +1,37 @@
+{
+  "name": "emoji-data",
+  "version": "0.0.1",
+  "description": "Awesome module",
+  "keywords": [],
+  "homepage": "https://github.com/mroth/emoji-data",
+  "bugs": "https://github.com/mroth/emoji-data/issues",
+  "author": {
+    "name": "Matthew Rothenberg",
+    "email": "mroth@mroth.info",
+    "url": "https://github.com/mroth"
+  },
+  "main": "./lib/emoji-data.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mroth/emoji-data.git"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha test/*.spec.coffee",
+    "pretest": "./node_modules/.bin/coffee --bare --output ./lib --compile ./src/*.coffee"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "coffee-script": "^1.7.1",
+    "coffee-errors": "^0.8.5",
+    "sinon": "^1.9.1",
+    "sinon-chai": "^2.5.0",
+    "mocha": "^1.18.2",
+    "chai": "^1.9.1"
+  },
+  "engines": {
+    "node": ">=0.10.0",
+    "npm": ">=1.2.10"
+  },
+  "license": "MIT"
+}
