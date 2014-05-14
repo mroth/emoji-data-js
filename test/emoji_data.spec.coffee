@@ -35,21 +35,21 @@ describe 'EmojiData', ->
 
 
   describe ".chars", ->
-    it "should return an array of all chars in unicode string format"
-      # EmojiData.chars.all? {|char| char.class == String}.should be_true
+    it "should return an array of all chars in unicode string format", ->
+      char.should.be.a('String') for char in EmojiData.chars()
 
-    it "should by default return one entry per known EmojiChar"
-      # EmojiData.chars.count.should eq(EmojiData.all.count)
+    it "should by default return one entry per known EmojiChar", ->
+      EmojiData.chars().length.should.equal EmojiData.all().length
 
-    it "should include variants in list when options {include_variants: true}"
-      # results = EmojiData.chars({include_variants: true})
-      # numChars    = EmojiData.all.count
-      # numVariants = EmojiData.all_with_variants.count
-      # results.count.should eq(numChars + numVariants)
+    it "should include variants in list when options {include_variants: true}", ->
+      results = EmojiData.chars({include_variants: true})
+      numChars = EmojiData.all().length
+      numVariants = EmojiData.all_with_variants().length
+      results.length.should.equal numChars + numVariants
 
     it "should not have any duplicates in list when variants are included"
       # results = EmojiData.chars({include_variants: true})
-      # results.count.should eq(results.uniq.count)
+      # results.length.should.equal results.uniq.length #TODO: no native uniq in js
 
   describe ".codepoints", ->
     it "should return an array of all known codepoints in dashed string representation"

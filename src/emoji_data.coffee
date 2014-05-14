@@ -16,6 +16,13 @@ class EmojiData
   @all_with_variants: ->
     ( ec for ec in EMOJI_CHARS when ec.has_variants() )
 
+  # An array of all known emoji chars rendered as UCS-2 strings.
+  @chars: (options = {include_variants: false}) ->
+    normals = (ec.char({variant_encoding: false}) for ec in EMOJI_CHARS)
+    extras  = (ec.char({variant_encoding: true} ) for ec in @all_with_variants())
+    return normals.concat(extras) if options.include_variants
+    normals
+
 
 module.exports = EmojiData
 module.exports.EmojiChar = EmojiChar
