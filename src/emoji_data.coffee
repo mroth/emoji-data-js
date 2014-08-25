@@ -1,4 +1,7 @@
 EmojiChar = require('./emoji_char')
+punycode = require('punycode')
+_ = {}
+_.str = require('underscore.string')
 
 class EmojiData
   EMOJI_MAP = require('../vendor/emoji-data/emoji.json')
@@ -22,6 +25,15 @@ class EmojiData
     extras  = (ec.char({variant_encoding: true} ) for ec in @all_with_variants())
     return normals.concat(extras) if options.include_variants
     normals
+
+  # Convert a native string glyph to a unified ID.
+  #
+  # This is a conversion operation, not a match, so it may produce unexpected
+  # results with different types of values.
+  @char_to_unified: (char) ->
+    cps = punycode.ucs2.decode(char)
+    hexes = ( _.str.rjust( cp.toString(16), 4, "0") for cp in cps )
+    hexes.join("-").toUpperCase()
 
 
 module.exports = EmojiData

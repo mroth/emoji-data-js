@@ -22,6 +22,7 @@
     "compile"    : "coffee --bare --output ./lib --compile ./src/*.coffee"
   },
   "dependencies": {
+    "underscore.string": "^2.3.3"
   },
   "devDependencies": {
     "chai": "^1.9.1",

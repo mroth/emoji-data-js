@@ -134,16 +134,18 @@ describe 'EmojiData', ->
 
 
   describe ".char_to_unified", ->
-    it "converts normal emoji to unified codepoint"
-      # EmojiData.char_to_unified("👾").should eq('1F47E')
-      # EmojiData.char_to_unified("🚀").should eq('1F680')
+    it "converts normal emoji to unified codepoint", ->
+      EmojiData.char_to_unified("👾").should.equal '1F47E'
+      EmojiData.char_to_unified("🚀").should.equal '1F680'
 
-    it "converts double-byte emoji to proper codepoint"
-      # EmojiData.char_to_unified("🇺🇸").should eq('1F1FA-1F1F8')
-      # EmojiData.char_to_unified("#⃣").should eq('0023-20E3')
+    it "converts double-byte emoji to proper codepoint", ->
+      EmojiData.char_to_unified("🇺🇸").should.equal '1F1FA-1F1F8'
 
-    it "converts variant encoded emoji to variant unified codepoint"
-      # EmojiData.char_to_unified("\u{2601}\u{FE0F}").should eq('2601-FE0F')
+    it "in doublebyte, adds padding to hex codes that are <4 chars", ->
+      EmojiData.char_to_unified("#⃣").should.equal '0023-20E3'
+
+    it "converts variant encoded emoji to variant unified codepoint", ->
+      EmojiData.char_to_unified("\u2601\uFE0F").should.equal '2601-FE0F'
 
 
   # TODO: below is kinda redundant but it is helpful as a helper method so maybe still test
