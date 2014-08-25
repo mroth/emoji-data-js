@@ -44,6 +44,12 @@ class EmojiChar
     target = if (@has_variants() && variant_encoding) then @variant() else @unified
     EmojiChar.unified_to_char(target)
 
+
+  # Returns an array of all possible string renderings of the glyph (normal and
+  # variant encoded).
+  chars: ->
+    (EmojiChar.unified_to_char(id) for id in [@unified].concat(@variations))
+
   # Convert a unified codepoint ID to the UCS-2 string representation.
   #
   # @param [String] uid the unified codepoint ID for an emoji

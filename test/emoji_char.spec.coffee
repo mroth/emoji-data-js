@@ -64,9 +64,9 @@ describe "EmojiChar", ->
 
 
     describe "#chars", ->
-      it "should return an array of all possible string render variations"
-        # @invader.chars.should eq(["\u{1F47E}"])
-        # @cloud.chars.should   eq(["\u{2601}","\u{2601}\u{FE0F}"])
+      it "should return an array of all possible string render variations", ->
+        @invader.chars().should.deep.equal ["👾"]
+        @cloud.chars().should.deep.equal ["\u2601","\u2601\uFE0F"]
 
     describe "#is_doublebyte", ->
       it "should indicate when a character is doublebyte based on the unified ID", ->
