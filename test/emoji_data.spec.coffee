@@ -2,6 +2,8 @@ require 'coffee-errors'
 
 chai = require 'chai'
 sinon = require 'sinon'
+_ = require 'lodash'
+
 # using compiled JavaScript file here to be sure module works
 EmojiData = require '../lib/emoji_data.js'
 
@@ -47,9 +49,9 @@ describe 'EmojiData', ->
       numVariants = EmojiData.all_with_variants().length
       results.length.should.equal numChars + numVariants
 
-    it "should not have any duplicates in list when variants are included"
-      # results = EmojiData.chars({include_variants: true})
-      # results.length.should.equal results.uniq.length #TODO: no native uniq in js
+    it "should not have any duplicates in list when variants are included", ->
+      results = EmojiData.chars({include_variants: true})
+      results.length.should.equal _.uniq(results).length
 
   describe ".codepoints", ->
     it "should return an array of all known codepoints in dashed string representation"
