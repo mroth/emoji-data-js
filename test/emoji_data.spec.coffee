@@ -98,18 +98,18 @@ describe 'EmojiData', ->
 
 
   describe ".find_by_unified", ->
-    it "should find the proper EmojiChar object"
-      # results = EmojiData.find_by_unified('1f680')
-      # results.should be_kind_of(EmojiChar)
-      # results.name.should eq('ROCKET')
+    it "should find the proper EmojiChar object", ->
+      results = EmojiData.find_by_unified('1F680')
+      results.should.be.an.instanceof(EmojiData.EmojiChar)
+      results.name.should.equal 'ROCKET'
 
-    it "should normalise capitalization for hex values"
-      # EmojiData.find_by_unified('1f680').should_not be_nil
+    it "should normalise capitalization for hex values", ->
+      EmojiData.find_by_unified('1f680').should.deep.equal EmojiData.find_by_unified('1F680')
 
-    it "should find via variant encoding ID format as well"
-      # results = EmojiData.find_by_unified('2764-fe0f')
-      # results.should_not be_nil
-      # results.name.should eq('HEAVY BLACK HEART')
+    it "should find via variant encoding ID format as well", ->
+      results = EmojiData.find_by_unified('2764-fe0f')
+      results.should.be.an.instanceof(EmojiData.EmojiChar)
+      results.name.should.equal 'HEAVY BLACK HEART'
 
 
   describe ".find_by_name", ->

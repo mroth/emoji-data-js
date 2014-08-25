@@ -36,5 +36,17 @@ class EmojiData
     hexes.join("-").toUpperCase()
 
 
+  #
+  # construct hashmap for fast precached lookups for `.find_by_unified`
+  #
+  EMOJICHAR_UNIFIED_MAP = {}
+  for char in EMOJI_CHARS
+    EMOJICHAR_UNIFIED_MAP[char.unified] = char
+    EMOJICHAR_UNIFIED_MAP[variant] = char for variant in char.variations
+
+  # Find a specific EmojiChar by its unified ID.
+  @find_by_unified: (uid) ->
+    EMOJICHAR_UNIFIED_MAP[uid.toUpperCase()]
+
 module.exports = EmojiData
 module.exports.EmojiChar = EmojiChar
