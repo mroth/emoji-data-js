@@ -116,14 +116,12 @@ describe 'EmojiData', ->
 
 
   describe ".find_by_name", ->
-    it "returns an array of results, upcasing input if needed"
-      # EmojiData.find_by_name('tree').should be_kind_of(Array)
-      # EmojiData.find_by_name('tree').count.should eq(5)
+    it "returns an array of results, upcasing input if needed", ->
+      EmojiData.find_by_name('tree').should.be.a 'array'
+      EmojiData.find_by_name('tree').length.should.equal 5
 
-    it "returns [] if nothing is found"
-      # EmojiData.find_by_name('sdlkfjlskdfj').should_not be_nil
-      # EmojiData.find_by_name('sdlkfjlskdfj').should be_kind_of(Array)
-      # EmojiData.find_by_name('sdlkfjlskdfj').count.should eq(0)
+    it "returns [] if nothing is found", ->
+      EmojiData.find_by_name('sdlkfjlskdfj').should.deep.equal []
 
   describe ".find_by_short_name", ->
     it "returns an array of results, downcasing input if needed"

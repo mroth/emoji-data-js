@@ -35,6 +35,9 @@ class EmojiData
     hexes = ( _.str.rjust( cp.toString(16), 4, "0") for cp in cps )
     hexes.join("-").toUpperCase()
 
+  # Find all EmojiChars that match a contain substring in their official name.
+  @find_by_name: (name) ->
+    (ec for ec in EMOJI_CHARS when ec.name.indexOf(name.toUpperCase()) != -1)
 
   #
   # construct hashmap for fast precached lookups for `.find_by_unified`
