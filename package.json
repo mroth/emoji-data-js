@@ -22,13 +22,13 @@
     "compile"    : "coffee --bare --output ./lib --compile ./src/*.coffee"
   },
   "dependencies": {
+    "lodash": "^2.4.1",
     "underscore.string": "^2.3.3"
   },
   "devDependencies": {
     "chai": "^1.9.1",
     "coffee-errors": "^0.8.5",
     "coffee-script": "^1.7.1",
-    "lodash": "^2.4.1",
     "mocha": "^1.18.2",
     "sinon": "^1.9.1",
     "sinon-chai": "^2.5.0"

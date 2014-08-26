@@ -123,15 +123,15 @@ describe 'EmojiData', ->
     it "returns [] if nothing is found", ->
       EmojiData.find_by_name('sdlkfjlskdfj').should.deep.equal []
 
-  describe ".find_by_short_name", ->
-    it "returns an array of results, downcasing input if needed"
-      # EmojiData.find_by_short_name('MOON').should be_kind_of(Array)
-      # EmojiData.find_by_short_name('MOON').count.should eq(13)
 
-    it "returns [] if nothing is found"
-      # EmojiData.find_by_short_name('sdlkfjlskdfj').should_not be_nil
-      # EmojiData.find_by_short_name('sdlkfjlskdfj').should be_kind_of(Array)
-      # EmojiData.find_by_short_name('sdlkfjlskdfj').count.should eq(0)
+  describe ".find_by_short_name", ->
+    it "returns an array of results, downcasing input if needed", ->
+      EmojiData.find_by_short_name('MOON').should.be.a 'array'
+      EmojiData.find_by_short_name('MOON').length.should.equal 13
+
+    it "returns [] if nothing is found", ->
+      EmojiData.find_by_short_name('sdlkfjlskdfj').should.deep.equal []
+
 
 
   describe ".char_to_unified", ->
