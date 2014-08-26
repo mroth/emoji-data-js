@@ -66,35 +66,38 @@ describe 'EmojiData', ->
       # results.all? {|cp| cp.match(/^[0-9A-F\-]{4,16}$/)}.should be_true
 
   describe ".find_by_str", ->
-    # before(:all), ->
-    #   @exact_results   = EmojiData.find_by_str("🚀")
-    #   @multi_results   = EmojiData.find_by_str("flying on my 🚀 to visit the 👾 people.")
-    #   @variant_results = EmojiData.find_by_str("\u{0023}\u{FE0F}\u{20E3}")
-    #   @variant_multi   = EmojiData.find_by_str("first a \u{0023}\u{FE0F}\u{20E3} then a 🚀")
+    before ->
+      @exact_results   = EmojiData.find_by_str("🚀")
+      @multi_results   = EmojiData.find_by_str("flying on my 🚀 to visit the 👾 people.")
+      @variant_results = EmojiData.find_by_str("\u0023\uFE0F\u20E3")
+      @variant_multi   = EmojiData.find_by_str("first a \u0023\uFE0F\u20E3 then a 🚀")
 
-    it "should find the proper EmojiChar object from a single string char"
-      # @exact_results.should be_kind_of(Array)
-      # @exact_results.length.should eq(1)
-      # @exact_results.first.should be_kind_of(EmojiChar)
-      # @exact_results.first.name.should eq('ROCKET')
+    it "should find the proper EmojiChar object from a single string char", ->
+      @exact_results.should.be.a 'array'
+      @exact_results.length.should.equal 1
+      @exact_results[0].should.be.an.instanceof EmojiData.EmojiChar
+      @exact_results[0].name.should.equal 'ROCKET'
 
-    it "should find the proper EmojiChar object from a variant encoded char"
-      # @variant_results.length.should eq(1)
-      # @variant_results.first.name.should eq('HASH KEY')
+    it "should find the proper EmojiChar object from a variant encoded char", ->
+      @variant_results.length.should.equal 1
+      @variant_results[0].name.should.equal 'HASH KEY'
 
-    it "should match multiple chars from within a string"
-      # @multi_results.should be_kind_of(Array)
-      # @multi_results.length.should eq(2)
-      # @multi_results[0].should be_kind_of(EmojiChar)
-      # @multi_results[1].should be_kind_of(EmojiChar)
+    it "should match multiple chars from within a string", ->
+      @multi_results.should.be.a 'array'
+      @multi_results.length.should.equal 2
+      @multi_results[0].should.be.an.instanceof EmojiData.EmojiChar
+      @multi_results[1].should.be.an.instanceof EmojiData.EmojiChar
 
-    it "should return multiple matches in the proper order"
-      # @multi_results[0].name.should eq('ROCKET')
-      # @multi_results[1].name.should eq('ALIEN MONSTER')
+    it "should return multiple matches in the proper order", ->
+      @multi_results[0].name.should.equal 'ROCKET'
+      @multi_results[1].name.should.equal 'ALIEN MONSTER'
 
-    it "should return multiple matches in the proper order for variant encodings"
-      # @variant_multi[0].name.should eq('HASH KEY')
-      # @variant_multi[1].name.should eq('ROCKET')
+    it "should return multiple matches in the proper order for variant encodings", ->
+      @variant_multi[0].name.should.equal 'HASH KEY'
+      @variant_multi[1].name.should.equal 'ROCKET'
+
+    it "returns [] if nothing is found", ->
+      EmojiData.find_by_str("i like turtles").should.deep.equal []
 
 
   describe ".find_by_unified", ->

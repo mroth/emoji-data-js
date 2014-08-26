@@ -48,5 +48,28 @@ class EmojiData
   @find_by_unified: (uid) ->
     EMOJICHAR_UNIFIED_MAP[uid.toUpperCase()]
 
+  # The RegExp matcher we use to do find_by_str efficiently.
+  FBS_REGEXP = new RegExp("(?:#{EmojiData.chars({include_variants: true}).join("|")})", "g")
+
+  # Search a string for all EmojiChars contained within.
+  #
+  # Returns an array of all EmojiChars contained within that string, in order.
+  # Each char will only appear once.
+  @find_by_str: (str) ->
+    # since JS doesnt seem to have the equivalent of .scan we do some hacky shit
+    # http://stackoverflow.com/questions/13895373/
+
+    # reset regexp pointer (really js? sigh)
+    FBS_REGEXP.lastIndex = 0
+
+    # keep executing regex until it returns no more results
+    matches = []
+    while (m = FBS_REGEXP.exec(str))
+      matches.push(m[0])
+
+    # map matched chars to EmojiChar objects
+    (@find_by_unified( @char_to_unified(id) ) for id in matches)
+
+
 module.exports = EmojiData
 module.exports.EmojiChar = EmojiChar
