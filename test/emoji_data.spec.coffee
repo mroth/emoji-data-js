@@ -96,6 +96,11 @@ describe 'EmojiData', ->
       @variant_multi[0].name.should.equal 'HASH KEY'
       @variant_multi[1].name.should.equal 'ROCKET'
 
+    it "should return multiple matches including duplicates", ->
+      results = EmojiData.find_by_str("flying my 🚀 to visit the 👾 people who have their own 🚀 too.")
+      results.should.be.a 'array'
+      results.length.should.equal 3
+
     it "returns [] if nothing is found", ->
       EmojiData.find_by_str("i like turtles").should.deep.equal []
 
