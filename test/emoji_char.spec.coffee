@@ -51,16 +51,16 @@ describe "EmojiChar", ->
         @usflag.char().should.equal "🇺🇸"
 
       it "should have a flag to output forced emoji variant char encoding if requested", ->
-        @cloud.char(    {variant_encoding: false}).should.equal "\u2601"
-        @cloud.char(    {variant_encoding:  true}).should.equal "\u2601\uFE0F"
+        @cloud.char( {variant_encoding: false}).should.equal "\u2601"
+        @cloud.char( {variant_encoding:  true}).should.equal "\u2601\uFE0F"
 
-      it "should fall back to normal encoding if no variant exists, even when requested"
-        # @invader.char(  {variant_encoding: false}).should eq("\u{1F47E}")
-        # @invader.char(  {variant_encoding:  true}).should eq("\u{1F47E}")
+      it "should fall back to normal encoding if no variant exists, even when requested", ->
+        @invader.char(  {variant_encoding: false}).should.equal "👾"
+        @invader.char(  {variant_encoding:  true}).should.equal "👾"
 
-      it "should default to variant encoding for chars with a variant present"
-        # @cloud.char.should eq("\u{2601}\u{FE0F}")
-        # @hourglass.char.should eq("\u{231B}\u{FE0F}")
+      it "should default to variant encoding for chars with a variant present", ->
+        @cloud.char().should.equal      "\u2601\uFE0F"
+        @hourglass.char().should.equal  "\u231B\uFE0F"
 
 
     describe "#chars", ->
