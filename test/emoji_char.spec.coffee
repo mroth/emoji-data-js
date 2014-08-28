@@ -41,26 +41,26 @@ describe "EmojiChar", ->
 
     describe "#toString", ->
       it "should return the unicode glyph as string as default to_s", ->
-        @invader.toString().should.equal @invader.char()
+        @invader.toString().should.equal @invader.render()
 
-    describe "#char", ->
+    describe "#render", ->
       it "should render as happy shiny unicode", ->
-        @invader.char().should.equal "👾"
+        @invader.render().should.equal "👾"
 
       it "should render as happy shiny unicode for doublebyte chars too", ->
-        @usflag.char().should.equal "🇺🇸"
+        @usflag.render().should.equal "🇺🇸"
 
       it "should have a flag to output forced emoji variant char encoding if requested", ->
-        @cloud.char( {variant_encoding: false}).should.equal "\u2601"
-        @cloud.char( {variant_encoding:  true}).should.equal "\u2601\uFE0F"
+        @cloud.render( {variant_encoding: false}).should.equal "\u2601"
+        @cloud.render( {variant_encoding:  true}).should.equal "\u2601\uFE0F"
 
       it "should fall back to normal encoding if no variant exists, even when requested", ->
-        @invader.char(  {variant_encoding: false}).should.equal "👾"
-        @invader.char(  {variant_encoding:  true}).should.equal "👾"
+        @invader.render(  {variant_encoding: false}).should.equal "👾"
+        @invader.render(  {variant_encoding:  true}).should.equal "👾"
 
       it "should default to variant encoding for chars with a variant present", ->
-        @cloud.char().should.equal      "\u2601\uFE0F"
-        @hourglass.char().should.equal  "\u231B\uFE0F"
+        @cloud.render().should.equal      "\u2601\uFE0F"
+        @hourglass.render().should.equal  "\u231B\uFE0F"
 
 
     describe "#chars", ->

@@ -40,7 +40,7 @@ class EmojiChar
   # @param [Object] options the encoding options
   # @option options [Boolean] variant_encoding true if you want to render with variant encoding.
   #
-  char: ({variant_encoding} = {variant_encoding: true}) ->
+  render: ({variant_encoding} = {variant_encoding: true}) ->
     target = if (@has_variants() && variant_encoding) then @variant() else @unified
     EmojiChar._unified_to_char(target)
 
@@ -51,7 +51,7 @@ class EmojiChar
     (EmojiChar._unified_to_char(id) for id in [@unified].concat(@variations))
 
   # Alias default toString to render the glyph
-  toString: -> @char()
+  toString: -> @render()
 
   # Convert a unified codepoint ID to the UCS-2 string representation.
   #
