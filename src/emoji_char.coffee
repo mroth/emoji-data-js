@@ -42,19 +42,19 @@ class EmojiChar
   #
   char: ({variant_encoding} = {variant_encoding: true}) ->
     target = if (@has_variants() && variant_encoding) then @variant() else @unified
-    EmojiChar.unified_to_char(target)
+    EmojiChar._unified_to_char(target)
 
 
   # Returns an array of all possible string renderings of the glyph (normal and
   # variant encoded).
   chars: ->
-    (EmojiChar.unified_to_char(id) for id in [@unified].concat(@variations))
+    (EmojiChar._unified_to_char(id) for id in [@unified].concat(@variations))
 
   # Convert a unified codepoint ID to the UCS-2 string representation.
   #
   # @param [String] uid the unified codepoint ID for an emoji
   # @return [String] UCS-2 string representation of the emoji glyph
-  @unified_to_char: (uid) ->
+  @_unified_to_char: (uid) ->
     cps = (parseInt(cp, 16) for cp in uid.split('-'))
     punycode.ucs2.encode(cps)
 

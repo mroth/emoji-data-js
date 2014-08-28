@@ -158,18 +158,17 @@ describe 'EmojiData', ->
       EmojiData.char_to_unified("\u2601\uFE0F").should.equal '2601-FE0F'
 
 
-  # TODO: below is kinda redundant but it is helpful as a helper method so maybe still test
   describe ".unified_to_char", ->
-    it "converts normal unified codepoints to unicode strings"
-      # EmojiData.unified_to_char('1F47E').should eq("👾")
-      # EmojiData.unified_to_char('1F680').should eq("🚀")
+    it "converts normal unified codepoints to unicode strings", ->
+      EmojiData.unified_to_char('1F47E').should.equal "👾"
+      EmojiData.unified_to_char('1F680').should.equal "🚀"
 
-    it "converts doublebyte unified codepoints to unicode strings"
-      # EmojiData.unified_to_char('1F1FA-1F1F8').should eq("🇺🇸")
-      # EmojiData.unified_to_char('0023-20E3').should eq("#⃣")
+    it "converts doublebyte unified codepoints to unicode strings", ->
+      EmojiData.unified_to_char('1F1FA-1F1F8').should.equal "🇺🇸"
+      EmojiData.unified_to_char('0023-20E3').should.equal "#⃣"
 
-    it "converts variant unified codepoints to unicode strings"
-      # EmojiData.unified_to_char('2764-fe0f').should eq("\u{2764}\u{FE0F}")
+    it "converts variant unified codepoints to unicode strings", ->
+      EmojiData.unified_to_char('2764-fe0f').should.equal "\u2764\uFE0F"
 
-    it "converts variant+doublebyte chars (triplets!) to unicode strings"
-      # EmojiData.unified_to_char('0030-FE0F-20E3').should eq("\u{0030}\u{FE0F}\u{20E3}")
+    it "converts variant+doublebyte chars (triplets!) to unicode strings", ->
+      EmojiData.unified_to_char('0030-FE0F-20E3').should.equal "\u0030\uFE0F\u20E3"
