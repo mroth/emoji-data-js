@@ -7,7 +7,7 @@ _ = require 'lodash'
 # using compiled JavaScript file here to be sure module works
 EmojiData = require '../lib/emoji_data.js'
 
-# expect = chai.expect
+expect = chai.expect
 chai.should()
 
 chai.use require 'sinon-chai'
@@ -124,6 +124,9 @@ describe 'EmojiData', ->
       results = EmojiData.from_unified('2764-fe0f')
       results.should.be.an.instanceof(EmojiData.EmojiChar)
       results.name.should.equal 'HEAVY BLACK HEART'
+
+    it "should return undefined when there is no match", ->
+      expect(EmojiData.from_unified('tacoz')).to.be.undefined
 
 
   describe ".find_by_name", ->
