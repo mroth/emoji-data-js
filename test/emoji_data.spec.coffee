@@ -138,6 +138,10 @@ describe 'EmojiData', ->
       EmojiData.find_by_short_name('sdlkfjlskdfj').should.deep.equal []
 
 
+  describe ".from_short_name", ->
+    it "returns exact matches on a short name"
+    it "returns undefined if nothing matches"
+
 
   describe ".char_to_unified", ->
     it "converts normal emoji to unified codepoint", ->

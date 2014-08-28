@@ -47,6 +47,10 @@ class EmojiData
       )
     )
 
+  #TODO: singleton lookups will likely be popular here, so make a cache for that
+  @from_short_name: (name)  ->
+    null
+
   #
   # construct hashmap for fast precached lookups for `.find_by_unified`
   #
