@@ -148,8 +148,16 @@ describe 'EmojiData', ->
 
 
   describe ".from_short_name", ->
-    it "returns exact matches on a short name"
-    it "returns undefined if nothing matches"
+    it "returns exact matches on a short name", ->
+      results = EmojiData.from_short_name('scream')
+      results.should.be.an.instanceof(EmojiData.EmojiChar)
+      results.name.should.equal 'FACE SCREAMING IN FEAR'
+
+    it "handles lowercasing input if required", ->
+      EmojiData.from_short_name('SCREAM').should.equal EmojiData.from_short_name('scream')
+
+    it "returns undefined if nothing matches", ->
+      expect(EmojiData.from_short_name('taco')).to.be.undefined
 
 
   describe ".char_to_unified", ->

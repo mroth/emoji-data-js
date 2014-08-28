@@ -62,9 +62,14 @@ class EmojiData
       )
     )
 
-  #TODO: singleton lookups will likely be popular here, so make a cache for that
+  # singleton keyword lookups will likely be popular here, so make a cache
+  EMOJICHAR_KEYWORD_MAP = {}
+  for ec in EMOJI_CHARS
+    EMOJICHAR_KEYWORD_MAP[keyword] = ec for keyword in ec.short_names
+
+  # Quickly lookup a EmojiChar based on shortname/keyword.  Must be exact match.
   @from_short_name: (name)  ->
-    null
+    EMOJICHAR_KEYWORD_MAP[name.toLowerCase()]
 
   #
   # construct hashmap for fast precached lookups for `.from_unified`
