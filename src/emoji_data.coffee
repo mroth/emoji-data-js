@@ -84,7 +84,7 @@ class EmojiData
   # Search a string for all EmojiChars contained within.
   #
   # Returns an array of all EmojiChars contained within that string, in order.
-  @find_by_str: (str) ->
+  @scan: (str) ->
     # since JS doesnt seem to have the equivalent of .scan we do some hacky shit
     # http://stackoverflow.com/questions/13895373/
 

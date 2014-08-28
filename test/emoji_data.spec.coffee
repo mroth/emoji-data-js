@@ -71,12 +71,12 @@ describe 'EmojiData', ->
         result.should.match /^[0-9A-F\-]{4,16}$/
 
 
-  describe ".find_by_str", ->
+  describe ".scan", ->
     before ->
-      @exact_results   = EmojiData.find_by_str("🚀")
-      @multi_results   = EmojiData.find_by_str("flying on my 🚀 to visit the 👾 people.")
-      @variant_results = EmojiData.find_by_str("\u0023\uFE0F\u20E3")
-      @variant_multi   = EmojiData.find_by_str("first a \u0023\uFE0F\u20E3 then a 🚀")
+      @exact_results   = EmojiData.scan("🚀")
+      @multi_results   = EmojiData.scan("flying on my 🚀 to visit the 👾 people.")
+      @variant_results = EmojiData.scan("\u0023\uFE0F\u20E3")
+      @variant_multi   = EmojiData.scan("first a \u0023\uFE0F\u20E3 then a 🚀")
 
     it "should find the proper EmojiChar object from a single string char", ->
       @exact_results.should.be.a 'array'
@@ -103,12 +103,12 @@ describe 'EmojiData', ->
       @variant_multi[1].name.should.equal 'ROCKET'
 
     it "should return multiple matches including duplicates", ->
-      results = EmojiData.find_by_str("flying my 🚀 to visit the 👾 people who have their own 🚀 too.")
+      results = EmojiData.scan("flying my 🚀 to visit the 👾 people who have their own 🚀 too.")
       results.should.be.a 'array'
       results.length.should.equal 3
 
     it "returns [] if nothing is found", ->
-      EmojiData.find_by_str("i like turtles").should.deep.equal []
+      EmojiData.scan("i like turtles").should.deep.equal []
 
 
   describe ".find_by_unified", ->
