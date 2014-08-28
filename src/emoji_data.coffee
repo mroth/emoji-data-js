@@ -26,6 +26,13 @@ class EmojiData
     return normals.concat(extras) if options.include_variants
     normals
 
+  # An array of all known emoji glyph codepoints
+  @codepoints: (options = {include_variants: false}) ->
+    normals = (ec.unified   for ec in EMOJI_CHARS)
+    extras  = (ec.variant() for ec in @all_with_variants())
+    return normals.concat(extras) if options.include_variants
+    normals
+
   # Convert a native string glyph to a unified ID.
   #
   # This is a conversion operation, not a match, so it may produce unexpected

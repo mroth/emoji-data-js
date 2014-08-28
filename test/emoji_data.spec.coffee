@@ -54,16 +54,22 @@ describe 'EmojiData', ->
       results.length.should.equal _.uniq(results).length
 
   describe ".codepoints", ->
-    it "should return an array of all known codepoints in dashed string representation"
-      # EmojiData.codepoints.all? {|cp| cp.class == String}.should be_true
-      # EmojiData.codepoints.all? {|cp| cp.match(/^[0-9A-F\-]{4,11}$/)}.should be_true
+    it "should return an array of all known codepoints in dashed string representation", ->
+      results = EmojiData.codepoints()
+      results.length.should.equal 845
+      for result in results
+        result.should.be.a 'string'
+        result.should.match /^[0-9A-F\-]{4,11}$/
 
-    it "should include variants in list when options {include_variants: true}"
-      # results = EmojiData.codepoints({include_variants: true})
-      # numChars    = EmojiData.all.count
-      # numVariants = EmojiData.all_with_variants.count
-      # results.count.should eq(numChars + numVariants)
-      # results.all? {|cp| cp.match(/^[0-9A-F\-]{4,16}$/)}.should be_true
+    it "should include variants in list when options {include_variants: true}", ->
+      numChars    = EmojiData.all().length
+      numVariants = EmojiData.all_with_variants().length
+      results = EmojiData.codepoints({include_variants: true})
+      results.length.should.equal (numChars + numVariants)
+      for result in results
+        result.should.be.a 'string'
+        result.should.match /^[0-9A-F\-]{4,16}$/
+
 
   describe ".find_by_str", ->
     before ->
