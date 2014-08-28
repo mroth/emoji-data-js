@@ -50,6 +50,9 @@ class EmojiChar
   chars: ->
     (EmojiChar._unified_to_char(id) for id in [@unified].concat(@variations))
 
+  # Alias default toString to render the glyph
+  toString: -> @char()
+
   # Convert a unified codepoint ID to the UCS-2 string representation.
   #
   # @param [String] uid the unified codepoint ID for an emoji

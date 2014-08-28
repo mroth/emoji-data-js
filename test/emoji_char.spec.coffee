@@ -39,9 +39,9 @@ describe "EmojiChar", ->
       @hourglass = new EmojiChar({unified: '231B', variations: ['231B-FE0F']})
       @cloud     = new EmojiChar({unified: '2601', variations: ['2601-FE0F']})
 
-    describe "#to_s", ->
-      it "should return the unicode char as string as default to_s"
-        # @invader.to_s.should eq(@invader.char)
+    describe "#toString", ->
+      it "should return the unicode glyph as string as default to_s", ->
+        @invader.toString().should.equal @invader.char()
 
     describe "#char", ->
       it "should render as happy shiny unicode", ->
