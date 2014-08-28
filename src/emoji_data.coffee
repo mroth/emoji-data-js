@@ -67,7 +67,7 @@ class EmojiData
     null
 
   #
-  # construct hashmap for fast precached lookups for `.find_by_unified`
+  # construct hashmap for fast precached lookups for `.from_unified`
   #
   EMOJICHAR_UNIFIED_MAP = {}
   for char in EMOJI_CHARS
@@ -75,7 +75,7 @@ class EmojiData
     EMOJICHAR_UNIFIED_MAP[variant] = char for variant in char.variations
 
   # Find a specific EmojiChar by its unified ID.
-  @find_by_unified: (uid) ->
+  @from_unified: (uid) ->
     EMOJICHAR_UNIFIED_MAP[uid.toUpperCase()]
 
   # The RegExp matcher we use to do find_by_str efficiently.
@@ -97,7 +97,7 @@ class EmojiData
       matches.push(m[0])
 
     # map matched chars to EmojiChar objects
-    (@find_by_unified( @char_to_unified(id) ) for id in matches)
+    (@from_unified( @char_to_unified(id) ) for id in matches)
 
 
 module.exports = EmojiData

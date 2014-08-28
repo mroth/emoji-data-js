@@ -111,17 +111,17 @@ describe 'EmojiData', ->
       EmojiData.scan("i like turtles").should.deep.equal []
 
 
-  describe ".find_by_unified", ->
+  describe ".from_unified", ->
     it "should find the proper EmojiChar object", ->
-      results = EmojiData.find_by_unified('1F680')
+      results = EmojiData.from_unified('1F680')
       results.should.be.an.instanceof(EmojiData.EmojiChar)
       results.name.should.equal 'ROCKET'
 
     it "should normalise capitalization for hex values", ->
-      EmojiData.find_by_unified('1f680').should.deep.equal EmojiData.find_by_unified('1F680')
+      EmojiData.from_unified('1f680').should.deep.equal EmojiData.from_unified('1F680')
 
     it "should find via variant encoding ID format as well", ->
-      results = EmojiData.find_by_unified('2764-fe0f')
+      results = EmojiData.from_unified('2764-fe0f')
       results.should.be.an.instanceof(EmojiData.EmojiChar)
       results.name.should.equal 'HEAVY BLACK HEART'
 
