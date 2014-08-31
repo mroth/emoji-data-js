@@ -3,8 +3,8 @@
   "version": "0.0.1",
   "description": "Convenience wrapper for emoji/unicode operations",
   "keywords": ["emoji", "unicode"],
-  "homepage": "https://github.com/mroth/emoji-data",
-  "bugs": "https://github.com/mroth/emoji-data/issues",
+  "homepage": "https://github.com/mroth/emoji-data-js",
+  "bugs": "https://github.com/mroth/emoji-data-js/issues",
   "author": {
     "name": "Matthew Rothenberg",
     "email": "mroth@mroth.info",
@@ -13,7 +13,7 @@
   "main": "./lib/emoji_data.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mroth/emoji-data.git"
+    "url": "https://github.com/mroth/emoji-data-js.git"
   },
   "scripts": {
     "test": "mocha test/*.spec.coffee",
