@@ -16,19 +16,22 @@
     "url": "https://github.com/mroth/emoji-data.git"
   },
   "scripts": {
-    "test"       : "mocha test/*.spec.coffee",
-    "pretest"    : "npm run-script compile",
-    "prepublish" : "npm run-script compile",
-    "compile"    : "coffee --bare --output ./lib --compile ./src/*.coffee"
+    "test": "mocha test/*.spec.coffee",
+    "pretest": "npm run-script compile",
+    "prepublish": "npm run-script compile",
+    "compile": "coffee --bare --output ./lib --compile ./src/*.coffee",
+    "bench": "coffee ./scripts/bench.coffee"
   },
   "dependencies": {
     "lodash": "^2.4.1",
     "underscore.string": "^2.3.3"
   },
   "devDependencies": {
+    "benchmark": "^1.0.0",
     "chai": "^1.9.1",
     "coffee-errors": "^0.8.5",
     "coffee-script": "^1.7.1",
+    "microtime": "^1.0.1",
     "mocha": "^1.18.2",
     "sinon": "^1.9.1",
     "sinon-chai": "^2.5.0"
