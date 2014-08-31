@@ -32,7 +32,7 @@ suite
   .add "find_by_short_name - many", -> EmojiData.find_by_short_name("MOON")
   .add "find_by_short_name - none", -> EmojiData.find_by_short_name("zzzz")
   .add "char_to_unified - single",  -> EmojiData.char_to_unified("🚀")
-  .add "char_to_unified - double",  -> EmojiData.char_to_unified("\u2601\uFE0F}")
+  .add "char_to_unified - double",  -> EmojiData.char_to_unified("\u2601\uFE0F")
   .add "unified_to_char - single",  -> EmojiData.unified_to_char("1F47E")
   .add "unified_to_char - double",  -> EmojiData.unified_to_char("2764-fe0f")
   .add "unified_to_char - triple",  -> EmojiData.unified_to_char("0030-FE0F-20E3")
@@ -64,6 +64,7 @@ formatResult = (suitename, r) ->
 Benchmark.forEach(suites, (suite) ->
   results = suite.run()
   results.sort( (a,b) -> b.hz - a.hz )
+  console.log ""
   Benchmark.forEach(results, (r) ->
     console.log formatResult(results.name, r)
   )
