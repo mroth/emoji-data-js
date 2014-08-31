@@ -13,7 +13,7 @@ class EmojiChar
   #
   # @return [Boolean] true when the EmojiChar is doublebyte
   is_doublebyte: ->
-    @unified.match(/-/) isnt null
+    @unified.indexOf('-') isnt -1
 
   # Does the character have any variant encodings?
   #
