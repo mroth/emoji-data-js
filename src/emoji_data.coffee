@@ -52,13 +52,15 @@ class EmojiData
 
   # Find all EmojiChars that match a contain substring in their official name.
   @find_by_name: (name) ->
-    (ec for ec in EMOJI_CHARS when ec.name.indexOf(name.toUpperCase()) != -1)
+    target = name.toUpperCase()
+    (ec for ec in EMOJI_CHARS when ec.name.indexOf(target) != -1)
 
   # Find all EmojiChars that match a contain substring in their short name.
   @find_by_short_name: (name) ->
+    target = name.toLowerCase()
     (ec for ec in EMOJI_CHARS when _.any(
         ec.short_names,
-        (sn)->sn.indexOf(name.toLowerCase()) != -1
+        (sn)->sn.indexOf(target) != -1
       )
     )
 
