@@ -1,7 +1,6 @@
 EmojiChar = require('./emoji_char')
 punycode = require('punycode')
-_ = require('lodash')
-_.str = require('underscore.string')
+_str = require('underscore.string')
 
 class EmojiData
   EMOJI_MAP = require('../vendor/emoji-data/emoji.json')
@@ -39,7 +38,7 @@ class EmojiData
   # results with different types of values.
   @char_to_unified: (char) ->
     cps = punycode.ucs2.decode(char)
-    hexes = ( _.str.rjust( cp.toString(16), 4, "0") for cp in cps )
+    hexes = ( _str.rjust( cp.toString(16), 4, "0") for cp in cps )
     hexes.join("-").toUpperCase()
 
   # Convert a unified codepoint ID to the UCS-2 string representation.
@@ -58,8 +57,7 @@ class EmojiData
   # Find all EmojiChars that match a contain substring in their short name.
   @find_by_short_name: (name) ->
     target = name.toLowerCase()
-    (ec for ec in EMOJI_CHARS when _.any(
-        ec.short_names,
+    (ec for ec in EMOJI_CHARS when ec.short_names.some(
         (sn)->sn.indexOf(target) != -1
       )
     )
