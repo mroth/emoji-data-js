@@ -20,17 +20,17 @@ class EmojiData
 
   # An array of all known emoji chars rendered as UCS-2 strings.
   @chars: (options = {include_variants: false}) ->
-    normals = (ec.render({variant_encoding: false}) for ec in EMOJI_CHARS)
-    extras  = (ec.render({variant_encoding: true} ) for ec in @all_with_variants())
-    return normals.concat(extras) if options.include_variants
-    normals
+    norms = (ec.render({variant_encoding: false}) for ec in EMOJI_CHARS)
+    extra = (ec.render({variant_encoding: true}) for ec in @all_with_variants())
+    return norms.concat(extra) if options.include_variants
+    norms
 
   # An array of all known emoji glyph codepoints
   @codepoints: (options = {include_variants: false}) ->
-    normals = (ec.unified   for ec in EMOJI_CHARS)
-    extras  = (ec.variant() for ec in @all_with_variants())
-    return normals.concat(extras) if options.include_variants
-    normals
+    norms = (ec.unified   for ec in EMOJI_CHARS)
+    extra = (ec.variant() for ec in @all_with_variants())
+    return norms.concat(extra) if options.include_variants
+    norms
 
   # Convert a native string glyph to a unified ID.
   #
@@ -58,7 +58,7 @@ class EmojiData
   @find_by_short_name: (name) ->
     target = name.toLowerCase()
     (ec for ec in EMOJI_CHARS when ec.short_names.some(
-        (sn)->sn.indexOf(target) != -1
+      (sn)->sn.indexOf(target) != -1
       )
     )
 
@@ -84,7 +84,10 @@ class EmojiData
     EMOJICHAR_UNIFIED_MAP[uid.toUpperCase()]
 
   # The RegExp matcher we use to do find_by_str efficiently.
-  FBS_REGEXP = new RegExp("(?:#{EmojiData.chars({include_variants: true}).join("|")})", "g")
+  FBS_REGEXP = new RegExp(
+    "(?:#{EmojiData.chars({include_variants: true}).join("|")})",
+    "g"
+  )
 
   # Search a string for all EmojiChars contained within.
   #

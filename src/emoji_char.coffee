@@ -28,7 +28,7 @@ class EmojiChar
     return null unless @variations.length > 0
     @variations[0]
 
-  # Renders a UCS-2 string representation of the glyph for writing to the screen.
+  # Renders a UCS-2 string representation of the glyph for writing to screen.
   #
   # If you want to specify whether or not to use variant encoding, pass an
   # options hash such as:
@@ -38,10 +38,13 @@ class EmojiChar
   # By default this will use the variant encoding if it exists.
   #
   # @param [Object] options the encoding options
-  # @option options [Boolean] variant_encoding true if you want to render with variant encoding.
-  #
+  # @option options [Boolean] variant_encoding true if you want to render with
+  # variant encoding.
   render: ({variant_encoding} = {variant_encoding: true}) ->
-    target = if (@has_variants() && variant_encoding) then @variant() else @unified
+    target = switch
+      when @has_variants() && variant_encoding then @variant()
+      else @unified
+
     EmojiChar._unified_to_char(target)
 
 
