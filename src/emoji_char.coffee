@@ -71,7 +71,7 @@ class EmojiChar
   #
   # @param options [Object] the encoding options
   # @option options [Boolean] variant_encoding true if you want to render with
-  # variant encoding.
+  #   variant encoding.
   #
   # @return [String] the emoji character rendered to a UCS-2 string
   render: ({variant_encoding} = {variant_encoding: true}) ->
@@ -91,7 +91,7 @@ class EmojiChar
   chars: ->
     (EmojiChar._unified_to_char(id) for id in [@unified].concat(@variations))
 
-  # @see `#render()`
+  # @see #render()
   # @return [String]
   toString: -> @render()
 
