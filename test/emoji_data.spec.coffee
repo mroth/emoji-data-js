@@ -156,6 +156,11 @@ describe 'EmojiData', ->
     it "handles lowercasing input if required", ->
       EmojiData.from_short_name('SCREAM').should.equal EmojiData.from_short_name('scream')
 
+    it "works on secondary keywords", ->
+      primary = EmojiData.from_short_name('hankey')
+      EmojiData.from_short_name('poop').should.equal primary
+      EmojiData.from_short_name('shit').should.equal primary
+
     it "returns undefined if nothing matches", ->
       expect(EmojiData.from_short_name('taco')).to.be.undefined
 
