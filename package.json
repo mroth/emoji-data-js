@@ -28,6 +28,7 @@
   "devDependencies": {
     "benchmark": "^1.0.0",
     "chai": "^1.9.1",
+    "codo": "^2.0.9",
     "coffee-errors": "^0.8.5",
     "coffee-script": "^1.7.1",
     "lodash": "^2.4.1",
