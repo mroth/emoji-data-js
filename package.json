@@ -1,48 +1,44 @@
 {
-  "name": "emoji-data",
-  "version": "0.2.0-pre",
+  "name":        "emoji-data",
+  "version":     "0.2.0-pre",
   "description": "Emoji encoding swiss army knife for NodeJS",
   "keywords": [
     "emoji",
     "unicode"
   ],
   "homepage": "https://github.com/mroth/emoji-data-js",
-  "bugs": "https://github.com/mroth/emoji-data-js/issues",
-  "author": {
-    "name": "Matthew Rothenberg",
-    "email": "mroth@mroth.info",
-    "url": "https://github.com/mroth"
-  },
-  "main": "./lib/emoji_data.js",
+  "bugs":     "https://github.com/mroth/emoji-data-js/issues",
+  "author":   "Matthew Rothenberg <mroth@mroth.info> (http://github.com/mroth)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mroth/emoji-data-js.git"
+    "url":  "https://github.com/mroth/emoji-data-js.git"
   },
+  "main": "./lib/emoji_data.js",
   "scripts": {
-    "test": "mocha test/*.spec.coffee",
-    "pretest": "npm run-script compile",
+    "test":       "mocha test/*.spec.coffee",
+    "pretest":    "npm run-script compile",
     "prepublish": "npm run-script compile",
-    "compile": "coffee --bare --output ./lib --compile ./src/*.coffee",
-    "bench": "coffee ./scripts/bench.coffee"
+    "compile":    "coffee --bare --output ./lib --compile ./src/*.coffee",
+    "bench":      "coffee ./scripts/bench.coffee"
   },
   "dependencies": {
-    "underscore.string": "^2.3.3"
+    "underscore.string":  "^2.3.3"
   },
   "devDependencies": {
-    "benchmark": "^1.0.0",
-    "chai": "^1.9.1",
-    "codo": "^2.0.9",
-    "coffee-errors": "^0.8.5",
-    "coffee-script": "^1.7.1",
-    "lodash": "^2.4.1",
-    "microtime": "^1.0.1",
-    "mocha": "^1.18.2",
-    "sinon": "^1.9.1",
-    "sinon-chai": "^2.5.0"
+    "benchmark":          "^1.0.0",
+    "chai":               "^1.9.1",
+    "codo":               "^2.0.9",
+    "coffee-errors":      "^0.8.5",
+    "coffee-script":      "^1.7.1",
+    "lodash":             "^2.4.1",
+    "microtime":          "^1.0.1",
+    "mocha":              "^1.18.2",
+    "sinon":              "^1.9.1",
+    "sinon-chai":         "^2.5.0"
   },
   "engines": {
-    "node": ">=0.10.0",
-    "npm": ">=1.2.10"
+    "node":               ">=0.10.0",
+    "npm":                ">=1.2.10"
   },
   "license": "MIT"
 }
