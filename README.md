@@ -57,6 +57,9 @@ environment. :dizzy:
 > EmojiData.all_with_variants().length
 107
 
+> EmojiData.find_by_short_name("moon").length
+13
+
 > EmojiData.find_by_name("tree").map(
     function(c) { return [c.unified, c.name, c.render()]; }
   );
