@@ -21,6 +21,8 @@ environment. :dizzy:
 
 [![Build Status](https://travis-ci.org/mroth/emoji-data-js.svg?branch=master)](https://travis-ci.org/mroth/emoji-data-js)
 
+[doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
+[variant]: http://www.unicode.org/L2/L2011/11438-emoji-var.pdf
 [rb]: https://github.com/mroth/emoji_data.rb
 [emojitracker]: http://www.emojitracker.com
 
