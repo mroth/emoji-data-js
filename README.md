@@ -33,7 +33,45 @@ environment. :dizzy:
 
 ## Usage Examples
 
-TODO
+```js
+> var EmojiData = require('emoji_data');
+
+> EmojiData.from_unified('2665');
+{ name: 'BLACK HEART SUIT',
+  unified: '2665',
+  variations: [ '2665-FE0F' ],
+  docomo: 'E68D',
+  au: 'EAA5',
+  softbank: 'E20C',
+  google: 'FEB1A',
+  short_name: 'hearts',
+  short_names: [ 'hearts' ],
+  text: null,
+  apple_img: true,
+  hangouts_img: true,
+  twitter_img: true }
+
+> EmojiData.all().length
+845
+
+> EmojiData.all_with_variants().length
+107
+
+> EmojiData.find_by_name("tree").map(
+    function(c) { return [c.unified, c.name, c.render()]; }
+  );
+[ [ '1F332', 'EVERGREEN TREE', '🌲' ],
+  [ '1F333', 'DECIDUOUS TREE', '🌳' ],
+  [ '1F334', 'PALM TREE', '🌴' ],
+  [ '1F384', 'CHRISTMAS TREE', '🎄' ],
+  [ '1F38B', 'TANABATA TREE', '🎋' ] ]
+
+> EmojiData.scan("I ♥ when marketers talk about the ☁. #blessed").forEach(
+    function(ec) { console.log("Found some " + ec.short_name + "!"); }
+  );
+Found some hearts!
+Found some cloud!
+```
 
 ## API Documentation
 
