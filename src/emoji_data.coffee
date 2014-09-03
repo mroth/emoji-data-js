@@ -59,8 +59,7 @@ class EmojiData
     target = name.toLowerCase()
     (ec for ec in EMOJI_CHARS when ec.short_names.some(
       (sn)->sn.indexOf(target) != -1
-      )
-    )
+    ))
 
   # singleton keyword lookups will likely be popular here, so make a cache
   EMOJICHAR_KEYWORD_MAP = {}
