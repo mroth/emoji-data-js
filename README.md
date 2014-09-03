@@ -33,9 +33,17 @@ environment. :dizzy:
 
 TODO
 
-## Testing
+## API Documentation
 
-    npm test
+http://coffeedoc.info/github/mroth/emoji-data-js/master/
+
+## Contributing
+
+Please be sure to run `npm test` and help keep test coverage at :100:.
+
+There is a full benchmark suite available via `npm run-script bench`.  Please
+test before and after your changes to ensure you have not caused a performance
+regression.
 
 ## License
 
