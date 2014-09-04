@@ -6,6 +6,18 @@ class EmojiData
   EMOJI_MAP = require('../vendor/emoji-data/emoji.json')
   EMOJI_CHARS = (new EmojiChar(char_blob) for char_blob in EMOJI_MAP)
 
+  # construct hashmap for fast precached lookups for `.from_unified`
+  EMOJICHAR_UNIFIED_MAP = {}
+  for ec in EMOJI_CHARS
+    EMOJICHAR_UNIFIED_MAP[ec.unified] = ec
+    EMOJICHAR_UNIFIED_MAP[variant] = ec for variant in ec.variations
+
+  # precomputed hashmap for fast precached lookups in .from_short_name
+  EMOJICHAR_KEYWORD_MAP = {}
+  for ec in EMOJI_CHARS
+    EMOJICHAR_KEYWORD_MAP[keyword] = ec for keyword in ec.short_names
+
+
   # Returns a list of all known Emoji characters as `EmojiChar` objects.
   #
   # @return [Array<EmojiChar>] a list of all known `EmojiChar`.
@@ -101,11 +113,6 @@ class EmojiData
       (sn)->sn.indexOf(target) != -1
     ))
 
-  # singleton keyword lookups will likely be popular here, so make a cache
-  EMOJICHAR_KEYWORD_MAP = {}
-  for ec in EMOJI_CHARS
-    EMOJICHAR_KEYWORD_MAP[keyword] = ec for keyword in ec.short_names
-
   # Finds a specific `EmojiChar` based on the unified codepoint ID.
   #
   # Must be exact match.
@@ -115,14 +122,6 @@ class EmojiData
   @from_short_name: (short_name)  ->
     EMOJICHAR_KEYWORD_MAP[short_name.toLowerCase()]
 
-  #
-  # construct hashmap for fast precached lookups for `.from_unified`
-  #
-  EMOJICHAR_UNIFIED_MAP = {}
-  for ec in EMOJI_CHARS
-    EMOJICHAR_UNIFIED_MAP[ec.unified] = ec
-    EMOJICHAR_UNIFIED_MAP[variant] = ec for variant in ec.variations
-
   # Finds a specific `EmojiChar` based on its unified codepoint ID.
   #
   # @param uid [String] the unified codepoint ID for an emoji
@@ -131,6 +130,7 @@ class EmojiData
     EMOJICHAR_UNIFIED_MAP[uid.toUpperCase()]
 
   # The RegExp matcher we use to do .scan() efficiently.
+  # needs to be defined after self.chars so not at top of file for now...
   FBS_REGEXP = new RegExp(
     "(?:#{EmojiData.chars({include_variants: true}).join("|")})",
     "g"
