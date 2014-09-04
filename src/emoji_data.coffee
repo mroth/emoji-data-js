@@ -95,8 +95,8 @@ class EmojiData
   #
   # @param short_name [String]
   # @return [Array<EmojiChar>]
-  @find_by_short_name: (name) ->
-    target = name.toLowerCase()
+  @find_by_short_name: (short_name) ->
+    target = short_name.toLowerCase()
     (ec for ec in EMOJI_CHARS when ec.short_names.some(
       (sn)->sn.indexOf(target) != -1
     ))
@@ -110,18 +110,18 @@ class EmojiData
   #
   # Must be exact match.
   #
-  # @param name [String]
+  # @param short_name [String]
   # @return [EmojiChar]
-  @from_short_name: (name)  ->
-    EMOJICHAR_KEYWORD_MAP[name.toLowerCase()]
+  @from_short_name: (short_name)  ->
+    EMOJICHAR_KEYWORD_MAP[short_name.toLowerCase()]
 
   #
   # construct hashmap for fast precached lookups for `.from_unified`
   #
   EMOJICHAR_UNIFIED_MAP = {}
-  for char in EMOJI_CHARS
-    EMOJICHAR_UNIFIED_MAP[char.unified] = char
-    EMOJICHAR_UNIFIED_MAP[variant] = char for variant in char.variations
+  for ec in EMOJI_CHARS
+    EMOJICHAR_UNIFIED_MAP[ec.unified] = ec
+    EMOJICHAR_UNIFIED_MAP[variant] = ec for variant in ec.variations
 
   # Finds a specific `EmojiChar` based on its unified codepoint ID.
   #
