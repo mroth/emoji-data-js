@@ -61,13 +61,13 @@ environment. :dizzy:
 13
 
 > EmojiData.find_by_name("tree").map(
-    function(c) { return [c.unified, c.name, c.render()]; }
+    function(c) { return [c.unified, c.render(), c.name]; }
   );
-[ [ '1F332', 'EVERGREEN TREE', '🌲' ],
-  [ '1F333', 'DECIDUOUS TREE', '🌳' ],
-  [ '1F334', 'PALM TREE', '🌴' ],
-  [ '1F384', 'CHRISTMAS TREE', '🎄' ],
-  [ '1F38B', 'TANABATA TREE', '🎋' ] ]
+[ [ '1F332', '🌲', 'EVERGREEN TREE' ],
+  [ '1F333', '🌳', 'DECIDUOUS TREE' ],
+  [ '1F334', '🌴', 'PALM TREE' ],
+  [ '1F384', '🎄', 'CHRISTMAS TREE' ],
+  [ '1F38B', '🎋', 'TANABATA TREE' ] ]
 
 > EmojiData.scan("I ♥ when marketers talk about the ☁. #blessed").forEach(
     function(ec) { console.log("Found some " + ec.short_name + "!"); }
