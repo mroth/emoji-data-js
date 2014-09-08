@@ -17,8 +17,6 @@ over 100M+ emoji glyphs daily. This version was written to provide all the same
 functionality while taking advantage of the crazy speed of the V8 runtime
 environment. :dizzy:
 
-**WORK IN PROGRESS - NOT RELEASED JUST YET**
-
 [![Build Status](https://travis-ci.org/mroth/emoji-data-js.svg?branch=master)](https://travis-ci.org/mroth/emoji-data-js)
 
 [doublebyte]: http://www.quora.com/Why-does-using-emoji-reduce-my-SMS-character-limit-to-70
@@ -27,7 +25,6 @@ environment. :dizzy:
 [emojitracker]: http://www.emojitracker.com
 
 ## Installation
-(Placeholder: won't work until this is released)
 
     npm install emoji-data
 
