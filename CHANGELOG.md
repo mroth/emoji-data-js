@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0 (TBD)
+## 0.2.0 (8 September 2014)
 
  * Initial release.
  * Does everything the Ruby version does, super fast! (V8 optimizations lead to
