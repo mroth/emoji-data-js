@@ -31,7 +31,7 @@ environment. :dizzy:
 ## Usage Examples
 
 ```js
-> var EmojiData = require('emoji_data');
+> var EmojiData = require('emoji-data');
 
 > EmojiData.from_unified('2665');
 { name: 'BLACK HEART SUIT',
