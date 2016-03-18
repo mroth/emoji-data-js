@@ -15,24 +15,24 @@ chai.use require 'sinon-chai'
 
 describe 'EmojiData', ->
   describe ".all", ->
-    it "should return an array of all 845 known emoji chars", ->
-      EmojiData.all().length.should.equal 845
+    it "should return an array of all 1299 known emoji chars", ->
+      EmojiData.all().length.should.equal 1299
 
     it "should return all EmojiChar objects", ->
       result.should.be.an.instanceof(EmojiData.EmojiChar) for result in EmojiData.all()
 
 
   describe ".all_doublebyte", ->
-    it "should return an array of all 21 known emoji chars with doublebyte encoding", ->
+    it "should return an array of all 287 known emoji chars with doublebyte encoding", ->
       results = EmojiData.all_doublebyte()
-      results.length.should.equal 21
+      results.length.should.equal 287
       result.should.be.an.instanceof(EmojiData.EmojiChar) for result in results
 
 
   describe ".all_with_variants", ->
-    it "should return an array of all 107 known emoji chars with variant encodings", ->
+    it "should return an array of all 117 known emoji chars with variant encodings", ->
       results = EmojiData.all_with_variants()
-      results.length.should.equal 107
+      results.length.should.equal 117
       result.should.be.an.instanceof(EmojiData.EmojiChar) for result in results
 
 
@@ -56,10 +56,10 @@ describe 'EmojiData', ->
   describe ".codepoints", ->
     it "should return an array of all known codepoints in dashed string representation", ->
       results = EmojiData.codepoints()
-      results.length.should.equal 845
+      results.length.should.equal 1299
       for result in results
         result.should.be.a 'string'
-        result.should.match /^[0-9A-F\-]{4,11}$/
+        result.should.match /^[0-9A-F]{4,5}(-[0-9A-F]{4,5})*$/
 
     it "should include variants in list when options {include_variants: true}", ->
       numChars    = EmojiData.all().length
@@ -68,7 +68,7 @@ describe 'EmojiData', ->
       results.length.should.equal (numChars + numVariants)
       for result in results
         result.should.be.a 'string'
-        result.should.match /^[0-9A-F\-]{4,16}$/
+        result.should.match /^[0-9A-F]{4,5}(-[0-9A-F]{4,5})*$/
 
 
   describe ".scan", ->
@@ -109,6 +109,15 @@ describe 'EmojiData', ->
 
     it "returns [] if nothing is found", ->
       EmojiData.scan("i like turtles").should.deep.equal []
+
+    it "should find two 'keycap_star' EmojiChar objects from two string chars", ->
+      results = EmojiData.scan(EmojiData.from_short_name("keycap_star").render() + '\u002A\u20E3')
+      results.should.be.a 'array'
+      results.length.should.equal 2
+      results[0].should.be.an.instanceof EmojiData.EmojiChar
+      results[0].short_name.should.equal 'keycap_star'
+      results[1].should.be.an.instanceof EmojiData.EmojiChar
+      results[1].short_name.should.equal 'keycap_star'
 
 
   describe ".from_unified", ->
@@ -162,7 +171,7 @@ describe 'EmojiData', ->
       EmojiData.from_short_name('shit').should.equal primary
 
     it "returns undefined if nothing matches", ->
-      expect(EmojiData.from_short_name('taco')).to.be.undefined
+      expect(EmojiData.from_short_name('some_emoji_name')).to.be.undefined
 
 
   describe ".char_to_unified", ->

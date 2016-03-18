@@ -100,7 +100,7 @@ class EmojiData
   # @return [Array<EmojiChar>]
   @find_by_name: (name) ->
     target = name.toUpperCase()
-    (ec for ec in EMOJI_CHARS when ec.name.indexOf(target) != -1)
+    (ec for ec in EMOJI_CHARS when ec.name && ec.name.indexOf(target) != -1)
 
   # Find all `EmojiChar` that match string in any of their associated short
   # name keywords.
@@ -132,7 +132,7 @@ class EmojiData
   # The RegExp matcher we use to do .scan() efficiently.
   # needs to be defined after self.chars so not at top of file for now...
   FBS_REGEXP = new RegExp(
-    "(?:#{EmojiData.chars({include_variants: true}).join("|")})",
+    "(?:#{EmojiData.chars({include_variants: true}).join("|").replace('\u002A', '\\\u002A')})",
     "g"
   )
 
